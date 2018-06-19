@@ -9,6 +9,10 @@
   margin-top: 150px;
 }
 
+.mt_15 {
+  margin-top: 15px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -115,4 +119,10 @@ a:active {
 
 .breadcrumb a {
   color: #337ab7;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  vertical-align: middle;
 }

@@ -1,7 +1,7 @@
 $(function () {
 
   var page = 1;
-  var pageSize = 10;
+  var pageSize = 8;
 
   render();
 
@@ -19,13 +19,12 @@ $(function () {
         $("tbody").html(template("tpl", info));
 
         $("#paginator").bootstrapPaginator({
-          bootstrapMajorVersion: 3,
+          bootstrapMajorVersion:3,
           currentPage: page,
-          totalPages: Math.ceil(info.total / info.size),
-          size: 'small',
-          onPageClicked: function (a, b, c, p) {
+          totalPages: Math.ceil(info.total/info.size),
+          size:'small',
+          onPageClicked:function (a,b,c,p) {
             page = p;
-
             render();
           }
         });
@@ -57,7 +56,6 @@ $(function () {
             $("#userModal").modal("hide");
             render();
           }
-          
          }
       })
      });
