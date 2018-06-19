@@ -1,8 +1,4 @@
-/**
- * Created by HUCC on 2017/11/21.
- */
-//进度条功能
-//禁用进度环
+
 NProgress.configure({ showSpinner: false });
 
 //注册一个全局的ajaxStart事件，所有的ajax在开启的时候，会触发这个事件
