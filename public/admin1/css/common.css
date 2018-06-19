@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 /* 写了back中所有页面的样式 */
 .body_bg {
   background-color: #222d32;
@@ -7,6 +5,9 @@
 
 .mt_150 {
   margin-top: 150px;
+}
+.mt_15 {
+  margin-top: 15px;
 }
 
 * {
@@ -115,4 +116,11 @@ a:active {
 
 .breadcrumb a {
   color: #337ab7;
+}
+
+
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  vertical-align: middle;
 }
