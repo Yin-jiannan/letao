@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>一级分类</title>
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
+  <link rel="stylesheet" href="lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="css/common.css">
 </head>
 
@@ -35,8 +35,8 @@
             <span>分类管理</span>
           </a>
           <div class="child" style="display: block;">
-            <a  class="now" href="first.html">一级分类</a>
-            <a href="second.html">二级分类</a>
+            <a href="first.html">一级分类</a>
+            <a class="now" href="second.html">二级分类</a>
           </div>
         </li>
         <li>
@@ -67,35 +67,35 @@
         <li>
           <a href="#">分类管理</a>
         </li>
-        <li class="active">一级分类</li>
+        <li class="active">二级分类</li>
       </ol>
 
       <!-- 内容区域 -->
       <div class="content">
-        <button class="btn btn-default mb_20 btn_add">添加分类</button>
+        <button class="btn btn-default btn_add">添加分类</button>
 
         <table class="table table-bordered table-striped mt_15">
           <thead>
             <tr>
-              <th width="20%">序号</th>
-              <th width="80%">名称</th>
+              <th width="10%">序号</th>
+              <th width="30%">一级分类名称</th>
+              <th width="30%">二级分类名称</th>
+              <th width="30%">二级分类LOGO</th>
             </tr>
           </thead>
           <tbody>
-            <!-- 坑 -->
+            <!-- 挖个坑 -->
+
           </tbody>
         </table>
-        <!-- 分页基本结构 -->
+
         <div class="text-right">
-          <ul id="paginator">
-          </ul>
+          <ul id="paginator"></ul>
         </div>
 
       </div>
 
     </div>
-
-
 
   </div>
 
@@ -123,7 +123,7 @@
     </div>
   </div>
 
-  <!-- 一级分类添加模态框 -->
+  <!-- 添加模态框 -->
   <div class="modal fade" tabindex="-1" id="addModal">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
@@ -133,32 +133,65 @@
           </button>
           <h4 class="modal-title">添加分类</h4>
         </div>
-
         <form>
           <div class="modal-body">
             <!-- 这个结构不能自己写，去bootstrap官网拷贝 -->
+
             <div class="form-group">
-              <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类的名称">
+              <input type="hidden" name="categoryId">
+              <input type="hidden" name="hot" value="1">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                <span class="dropdown-text">请选择一级分类</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <!-- 再挖个坑 -->
+                </ul>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" name="brandName" class="form-control" placeholder="请输入二级分类的名称">
+            </div>
+            <!-- 上传按钮 -->
+            <div class="form-group">
+              <label for="fileupload" class="btn btn-default">上传图片</label>
+              <input type="file" id="fileupload" name="pic1" data-url="/category/addSecondCategoryPic" class="hidden">
+            </div>
+
+            <div class="form-group">
+              <div class="img_box">
+                <img src="images/none.png" width="100" alt="">
+                <input type="hidden" name="brandLogo">
+              </div>
             </div>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="submit" class="btn btn-primary btn_confirm">添加</button>
+            <button type="submit" class="btn btn-primary btn_confirm">确定</button>
           </div>
         </form>
-
       </div>
     </div>
   </div>
 
-
   <script type="text/html" id="tpl">
     {{each rows v i}}
     <tr>
-      <td>{{(page-1)*size+i+1}}</td>
+      <td>{{(page-1)*size + i+1}}</td>
       <td>{{v.categoryName}}</td>
+      <td>{{v.brandName}}</td>
+      <td>
+        <img src="{{v.brandLogo?v.brandLogo:'images/none.png'}}" width="50" height="50" alt="">
+      </td>
     </tr>
+    {{/each}}
+  </script>
+
+  <script type="text/html" id="tpl2">
+  {{each rows v i}}
+    <li><a data-id="{{v.id}}" tabindex="-1" href="#">{{v.categoryName}}</a></li>
     {{/each}}
   </script>
 
@@ -168,8 +201,10 @@
   <script src="lib/artTemplate/template-web.js"></script>
   <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/first.js"></script>
+  <script src="js/second.js"></script>
 </body>
 
 </html>
